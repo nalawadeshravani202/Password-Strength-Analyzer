@@ -4,9 +4,47 @@ A Flask-based web application that analyzes password strength based on security 
 
 ---
 
-## 📸 Project Screenshot
+## 📸 Project Screenshots
+
+### 🏠 Home Page
 
 ![Homepage](screenshots/homepage.png)
+
+---
+
+### 🔴 Weak Password Analysis
+
+![Weak Password](screenshots/weak-password.png)
+
+---
+
+### 🟡 Medium Password Analysis
+
+![Medium Password](screenshots/medium-password.png)
+
+---
+
+### 🟢 Strong Password Analysis
+
+![Strong Password](screenshots/strong-password.png)
+
+---
+
+### 🟢 Very Strong Password Analysis
+
+![Strong Password](screenshots/very-strong-password.png)
+
+---
+
+### 🔑 Generated Strong Password
+
+![Generated Password](screenshots/generated-password.png)
+
+---
+
+### ⚠ Password Reuse Detection
+
+![Password Reuse](screenshots/reused-password.png)
 
 ---
 
