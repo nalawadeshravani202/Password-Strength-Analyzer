@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Password Strength Analyzer</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Password Strength Analyzer
+            </h1>
+            <form method="POST">
+                <label>Enter Password</label>
+                <div class="password-box">
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter Password"
+                        value="{{password if password else ''}}"
+                        required
+                    >
+                    <button
+                        type="button"
+                        onclick="togglePassword()"
+                    >
+                    Show
+                    </button>
+                </div>
+
+                <button
+                    class="analyze-btn"
+                    type="submit"
+                >
+                Analyze Password
+                </button>
+
+            </form>
+
+            {% if result %}
+            <div class="result">
+                <h2>Result</h2>
+                <p>
+                    Length :
+                    {% if result.length %}
+                        <span class="good">✔</span>
+                    {% else %}
+                        <span class="bad">✖</span>
+                    {% endif %}
+                </p>
+
+                <p>
+                    Uppercase :
+                    {% if result.uppercase %}
+                        <span class="good">✔</span>
+                    {% else %}
+                        <span class="bad">✖</span>
+                    {% endif %}
+                </p>
+
+                <p>
+                    Lowercase :
+                    {% if result.lowercase %}
+                        <span class="good">✔</span>
+                    {% else %}
+                        <span class="bad">✖</span>
+                    {% endif %}
+                </p>
+
+                <p>
+                    Number :
+                    {% if result.number %}
+                        <span class="good">✔</span>
+                    {% else %}
+                        <span class="bad">✖</span>
+                    {% endif %}
+                </p>
+
+                <p>
+                    Special Character :
+                    {% if result.special %}
+                        <span class="good">✔</span>
+                    {% else %}
+                        <span class="bad">✖</span>
+                    {% endif %}
+                </p>
+
+                <hr>
+                <h3>
+                    Score : {{score}}%
+                </h3>
+
+                <h3>
+                    Strength : {{strength}}
+                </h3>
+
+                {% if reused %}
+                <div class="warning">
+                    Password has been used before.
+                </div>
+                {% endif %}
+                <div class="suggestions">
+                    <h3>suggestions</h3>
+                    {% if suggestions %}
+                    <ul>
+                        {% for item in suggestions %}
+                        <li>{{item}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="good">
+                        Excellent Password!
+                    </p>
+                    {% endif %}
+                </div>
+
+                <div class="generated-password">
+                    <h3>Generated Strong Password</h3>
+
+                    <div class="generated-box">
+
+                        <input
+                            type="text"
+                            id="generatedPassword"
+                            value="{{generated }}"
+                            readonly
+                        >
+
+                        <button
+                            type="button"
+                            onclick="copyPassword()"
+                        >
+                            Copy 
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+        <script src="{{ url_for('static',filename='script.js')}}"></script>
+    </body>
+</html>
